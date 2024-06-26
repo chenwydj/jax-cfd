@@ -68,6 +68,8 @@ def kolmogorov_forcing(
     offsets: Optional[Tuple[Tuple[float, ...], ...]] = None,
 ) -> ForcingFn:
   """Returns the Kolmogorov forcing function for turbulence in 2D."""
+  if not isinstance(grid, grids.Grid):
+    grid = grids.consistent_grid(*grid)
   if offsets is None:
     offsets = grid.cell_faces
 
